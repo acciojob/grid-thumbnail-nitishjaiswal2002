@@ -1,16 +1,23 @@
-//your JS code here. If required.
 document.addEventListener("DOMContentLoaded", function() {
-  const thumbnails = document.querySelectorAll('.thumbnail');
+  const gridContainer = document.getElementById('grid-container');
+  const gridItems = document.querySelectorAll('.grid-item');
 
-  thumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', function() {
-      if (thumbnail.classList.contains('expanded')) {
-        thumbnail.classList.remove('expanded');
-        thumbnails.forEach(thumb => thumb.classList.remove('hidden'));
-      } else {
-        thumbnails.forEach(thumb => thumb.classList.add('hidden'));
-        thumbnail.classList.add('expanded');
-        thumbnail.classList.remove('hidden');
+  gridItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const expandedItem = document.querySelector('.grid-item.expanded');
+
+      if (expandedItem) {
+        expandedItem.classList.remove('expanded');
+        gridItems.forEach(item => item.classList.remove('hidden'));
+      }
+
+      if (expandedItem !== this) {
+        this.classList.add('expanded');
+        gridItems.forEach(item => {
+          if (!item.classList.contains('expanded')) {
+            item.classList.add('hidden');
+          }
+        });
       }
     });
   });
