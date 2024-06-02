@@ -1,1 +1,37 @@
 /*  your css code here. If applicable */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.thumbnail.expanded {
+  grid-column: span 3;
+  grid-row: span 3;
+  width: 100%;
+  height: auto;
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
